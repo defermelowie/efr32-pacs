@@ -1,0 +1,12 @@
+[workspace]
+resolver = "3"
+members = ["pacs/*"]
+
+[workspace.package]
+keywords = ["no-std", "cortex-m", "efr32"]
+edition = "2024"
+version = "0.1.0"
+readme = "readme.md"
+
+[workspace.dependencies]
+cortex-m = "0.7.3"
