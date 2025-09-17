@@ -1292,24 +1292,24 @@ impl core::fmt::Debug for UlfrcoS {
 }
 #[doc = "ULFRCO_S Registers"]
 pub mod ulfrco_s;
-#[doc = "USBAHB_NS_AHBS Registers"]
-pub type UsbahbNsAhbs = crate::Periph<usbahb_ns_ahbs::RegisterBlock, 0x5600_0000>;
-impl core::fmt::Debug for UsbahbNsAhbs {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("UsbahbNsAhbs").finish()
-    }
-}
-#[doc = "USBAHB_NS_AHBS Registers"]
-pub mod usbahb_ns_ahbs;
-#[doc = "USBAHB_S_AHBS Registers"]
-pub type UsbahbSAhbs = crate::Periph<usbahb_s_ahbs::RegisterBlock, 0x4600_0000>;
-impl core::fmt::Debug for UsbahbSAhbs {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("UsbahbSAhbs").finish()
-    }
-}
-#[doc = "USBAHB_S_AHBS Registers"]
-pub mod usbahb_s_ahbs;
+// #[doc = "USBAHB_NS_AHBS Registers"]
+// pub type UsbahbNsAhbs = crate::Periph<usbahb_ns_ahbs::RegisterBlock, 0x5600_0000>;
+// impl core::fmt::Debug for UsbahbNsAhbs {
+//     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+//         f.debug_struct("UsbahbNsAhbs").finish()
+//     }
+// }
+// #[doc = "USBAHB_NS_AHBS Registers"]
+// pub mod usbahb_ns_ahbs;
+// #[doc = "USBAHB_S_AHBS Registers"]
+// pub type UsbahbSAhbs = crate::Periph<usbahb_s_ahbs::RegisterBlock, 0x4600_0000>;
+// impl core::fmt::Debug for UsbahbSAhbs {
+//     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+//         f.debug_struct("UsbahbSAhbs").finish()
+//     }
+// }
+// #[doc = "USBAHB_S_AHBS Registers"]
+// pub mod usbahb_s_ahbs;
 #[doc = "USBPLL0_NS Registers"]
 pub type Usbpll0Ns = crate::Periph<usbpll0_ns::RegisterBlock, 0x5700_4000>;
 impl core::fmt::Debug for Usbpll0Ns {
@@ -1638,10 +1638,10 @@ pub struct Peripherals {
     pub ulfrco_ns: UlfrcoNs,
     #[doc = "ULFRCO_S"]
     pub ulfrco_s: UlfrcoS,
-    #[doc = "USBAHB_NS_AHBS"]
-    pub usbahb_ns_ahbs: UsbahbNsAhbs,
-    #[doc = "USBAHB_S_AHBS"]
-    pub usbahb_s_ahbs: UsbahbSAhbs,
+    // #[doc = "USBAHB_NS_AHBS"]
+    // pub usbahb_ns_ahbs: UsbahbNsAhbs,
+    // #[doc = "USBAHB_S_AHBS"]
+    // pub usbahb_s_ahbs: UsbahbSAhbs,
     #[doc = "USBPLL0_NS"]
     pub usbpll0_ns: Usbpll0Ns,
     #[doc = "USBPLL0_S"]
@@ -1684,133 +1684,135 @@ impl Peripherals {
     #[doc = r" Each of the returned peripherals must be used at most once."]
     #[inline]
     pub unsafe fn steal() -> Self {
-        DEVICE_PERIPHERALS = true;
-        Peripherals {
-            acmp0_ns: Acmp0Ns::steal(),
-            acmp0_s: Acmp0S::steal(),
-            acmp1_ns: Acmp1Ns::steal(),
-            acmp1_s: Acmp1S::steal(),
-            bufc_ns: BufcNs::steal(),
-            bufc_s: BufcS::steal(),
-            buram_ns: BuramNs::steal(),
-            buram_s: BuramS::steal(),
-            burtc_ns: BurtcNs::steal(),
-            burtc_s: BurtcS::steal(),
-            cmu_ns: CmuNs::steal(),
-            cmu_s: CmuS::steal(),
-            dcdc_ns: DcdcNs::steal(),
-            dcdc_s: DcdcS::steal(),
-            dmem_ns: DmemNs::steal(),
-            dmem_s: DmemS::steal(),
-            dpll0_ns: Dpll0Ns::steal(),
-            dpll0_s: Dpll0S::steal(),
-            emu_ns: EmuNs::steal(),
-            emu_s: EmuS::steal(),
-            etampdet_ns: EtampdetNs::steal(),
-            etampdet_s: EtampdetS::steal(),
-            eusart0_ns: Eusart0Ns::steal(),
-            eusart0_s: Eusart0S::steal(),
-            eusart1_ns: Eusart1Ns::steal(),
-            eusart1_s: Eusart1S::steal(),
-            eusart2_ns: Eusart2Ns::steal(),
-            eusart2_s: Eusart2S::steal(),
-            eusart3_ns: Eusart3Ns::steal(),
-            eusart3_s: Eusart3S::steal(),
-            eusart4_ns: Eusart4Ns::steal(),
-            eusart4_s: Eusart4S::steal(),
-            fsrco_ns: FsrcoNs::steal(),
-            fsrco_s: FsrcoS::steal(),
-            gpcrc_ns: GpcrcNs::steal(),
-            gpcrc_s: GpcrcS::steal(),
-            gpio_ns: GpioNs::steal(),
-            gpio_s: GpioS::steal(),
-            hfrco0_ns: Hfrco0Ns::steal(),
-            hfrco0_s: Hfrco0S::steal(),
-            hfrcoem23_ns: Hfrcoem23Ns::steal(),
-            hfrcoem23_s: Hfrcoem23S::steal(),
-            hfxo0_ns: Hfxo0Ns::steal(),
-            hfxo0_s: Hfxo0S::steal(),
-            hostmailbox_ns: HostmailboxNs::steal(),
-            hostmailbox_s: HostmailboxS::steal(),
-            i2c0_ns: I2c0Ns::steal(),
-            i2c0_s: I2c0S::steal(),
-            i2c1_ns: I2c1Ns::steal(),
-            i2c1_s: I2c1S::steal(),
-            iadc0_ns: Iadc0Ns::steal(),
-            iadc0_s: Iadc0S::steal(),
-            icache0_ns: Icache0Ns::steal(),
-            icache0_s: Icache0S::steal(),
-            ldmaxbar_ns: LdmaxbarNs::steal(),
-            ldmaxbar_s: LdmaxbarS::steal(),
-            ldma_ns: LdmaNs::steal(),
-            ldma_s: LdmaS::steal(),
-            // lesense_ns: LesenseNs::steal(),
-            // lesense_s: LesenseS::steal(),
-            letimer0_ns: Letimer0Ns::steal(),
-            letimer0_s: Letimer0S::steal(),
-            lfrco_ns: LfrcoNs::steal(),
-            lfrco_s: LfrcoS::steal(),
-            lfxo_ns: LfxoNs::steal(),
-            lfxo_s: LfxoS::steal(),
-            mpahbram_ns: MpahbramNs::steal(),
-            mpahbram_s: MpahbramS::steal(),
-            msc_ns: MscNs::steal(),
-            msc_s: MscS::steal(),
-            pcnt0_ns: Pcnt0Ns::steal(),
-            pcnt0_s: Pcnt0S::steal(),
-            pfmxpprf_ns: PfmxpprfNs::steal(),
-            pfmxpprf_s: PfmxpprfS::steal(),
-            prs_ns: PrsNs::steal(),
-            prs_s: PrsS::steal(),
-            radioaes_ns: RadioaesNs::steal(),
-            radioaes_s: RadioaesS::steal(),
-            rffpll0_ns: Rffpll0Ns::steal(),
-            rffpll0_s: Rffpll0S::steal(),
-            scratchpad_ns: ScratchpadNs::steal(),
-            scratchpad_s: ScratchpadS::steal(),
-            semailbox_ns_host: SemailboxNsHost::steal(),
-            semailbox_s_host: SemailboxSHost::steal(),
-            smu_ns: SmuNs::steal(),
-            smu_ns_cfgns: SmuNsCfgns::steal(),
-            smu_s: SmuS::steal(),
-            smu_s_cfgns: SmuSCfgns::steal(),
-            syscfg_ns: SyscfgNs::steal(),
-            syscfg_ns_cfgns: SyscfgNsCfgns::steal(),
-            syscfg_s: SyscfgS::steal(),
-            syscfg_s_cfgns: SyscfgSCfgns::steal(),
-            sysrtc0_ns: Sysrtc0Ns::steal(),
-            sysrtc0_s: Sysrtc0S::steal(),
-            timer0_ns: Timer0Ns::steal(),
-            timer0_s: Timer0S::steal(),
-            timer1_ns: Timer1Ns::steal(),
-            timer1_s: Timer1S::steal(),
-            timer2_ns: Timer2Ns::steal(),
-            timer2_s: Timer2S::steal(),
-            timer3_ns: Timer3Ns::steal(),
-            timer3_s: Timer3S::steal(),
-            timer4_ns: Timer4Ns::steal(),
-            timer4_s: Timer4S::steal(),
-            timer5_ns: Timer5Ns::steal(),
-            timer5_s: Timer5S::steal(),
-            timer6_ns: Timer6Ns::steal(),
-            timer6_s: Timer6S::steal(),
-            timer7_ns: Timer7Ns::steal(),
-            timer7_s: Timer7S::steal(),
-            ulfrco_ns: UlfrcoNs::steal(),
-            ulfrco_s: UlfrcoS::steal(),
-            usbahb_ns_ahbs: UsbahbNsAhbs::steal(),
-            usbahb_s_ahbs: UsbahbSAhbs::steal(),
-            usbpll0_ns: Usbpll0Ns::steal(),
-            usbpll0_s: Usbpll0S::steal(),
-            usb_ns_apbs: UsbNsApbs::steal(),
-            usb_s_apbs: UsbSApbs::steal(),
-            vdac0_ns: Vdac0Ns::steal(),
-            vdac0_s: Vdac0S::steal(),
-            wdog0_ns: Wdog0Ns::steal(),
-            wdog0_s: Wdog0S::steal(),
-            wdog1_ns: Wdog1Ns::steal(),
-            wdog1_s: Wdog1S::steal(),
-            devinfo: Devinfo::steal(),
+        unsafe {
+            DEVICE_PERIPHERALS = true;
+            Peripherals {
+                acmp0_ns: Acmp0Ns::steal(),
+                acmp0_s: Acmp0S::steal(),
+                acmp1_ns: Acmp1Ns::steal(),
+                acmp1_s: Acmp1S::steal(),
+                bufc_ns: BufcNs::steal(),
+                bufc_s: BufcS::steal(),
+                buram_ns: BuramNs::steal(),
+                buram_s: BuramS::steal(),
+                burtc_ns: BurtcNs::steal(),
+                burtc_s: BurtcS::steal(),
+                cmu_ns: CmuNs::steal(),
+                cmu_s: CmuS::steal(),
+                dcdc_ns: DcdcNs::steal(),
+                dcdc_s: DcdcS::steal(),
+                dmem_ns: DmemNs::steal(),
+                dmem_s: DmemS::steal(),
+                dpll0_ns: Dpll0Ns::steal(),
+                dpll0_s: Dpll0S::steal(),
+                emu_ns: EmuNs::steal(),
+                emu_s: EmuS::steal(),
+                etampdet_ns: EtampdetNs::steal(),
+                etampdet_s: EtampdetS::steal(),
+                eusart0_ns: Eusart0Ns::steal(),
+                eusart0_s: Eusart0S::steal(),
+                eusart1_ns: Eusart1Ns::steal(),
+                eusart1_s: Eusart1S::steal(),
+                eusart2_ns: Eusart2Ns::steal(),
+                eusart2_s: Eusart2S::steal(),
+                eusart3_ns: Eusart3Ns::steal(),
+                eusart3_s: Eusart3S::steal(),
+                eusart4_ns: Eusart4Ns::steal(),
+                eusart4_s: Eusart4S::steal(),
+                fsrco_ns: FsrcoNs::steal(),
+                fsrco_s: FsrcoS::steal(),
+                gpcrc_ns: GpcrcNs::steal(),
+                gpcrc_s: GpcrcS::steal(),
+                gpio_ns: GpioNs::steal(),
+                gpio_s: GpioS::steal(),
+                hfrco0_ns: Hfrco0Ns::steal(),
+                hfrco0_s: Hfrco0S::steal(),
+                hfrcoem23_ns: Hfrcoem23Ns::steal(),
+                hfrcoem23_s: Hfrcoem23S::steal(),
+                hfxo0_ns: Hfxo0Ns::steal(),
+                hfxo0_s: Hfxo0S::steal(),
+                hostmailbox_ns: HostmailboxNs::steal(),
+                hostmailbox_s: HostmailboxS::steal(),
+                i2c0_ns: I2c0Ns::steal(),
+                i2c0_s: I2c0S::steal(),
+                i2c1_ns: I2c1Ns::steal(),
+                i2c1_s: I2c1S::steal(),
+                iadc0_ns: Iadc0Ns::steal(),
+                iadc0_s: Iadc0S::steal(),
+                icache0_ns: Icache0Ns::steal(),
+                icache0_s: Icache0S::steal(),
+                ldmaxbar_ns: LdmaxbarNs::steal(),
+                ldmaxbar_s: LdmaxbarS::steal(),
+                ldma_ns: LdmaNs::steal(),
+                ldma_s: LdmaS::steal(),
+                // lesense_ns: LesenseNs::steal(),
+                // lesense_s: LesenseS::steal(),
+                letimer0_ns: Letimer0Ns::steal(),
+                letimer0_s: Letimer0S::steal(),
+                lfrco_ns: LfrcoNs::steal(),
+                lfrco_s: LfrcoS::steal(),
+                lfxo_ns: LfxoNs::steal(),
+                lfxo_s: LfxoS::steal(),
+                mpahbram_ns: MpahbramNs::steal(),
+                mpahbram_s: MpahbramS::steal(),
+                msc_ns: MscNs::steal(),
+                msc_s: MscS::steal(),
+                pcnt0_ns: Pcnt0Ns::steal(),
+                pcnt0_s: Pcnt0S::steal(),
+                pfmxpprf_ns: PfmxpprfNs::steal(),
+                pfmxpprf_s: PfmxpprfS::steal(),
+                prs_ns: PrsNs::steal(),
+                prs_s: PrsS::steal(),
+                radioaes_ns: RadioaesNs::steal(),
+                radioaes_s: RadioaesS::steal(),
+                rffpll0_ns: Rffpll0Ns::steal(),
+                rffpll0_s: Rffpll0S::steal(),
+                scratchpad_ns: ScratchpadNs::steal(),
+                scratchpad_s: ScratchpadS::steal(),
+                semailbox_ns_host: SemailboxNsHost::steal(),
+                semailbox_s_host: SemailboxSHost::steal(),
+                smu_ns: SmuNs::steal(),
+                smu_ns_cfgns: SmuNsCfgns::steal(),
+                smu_s: SmuS::steal(),
+                smu_s_cfgns: SmuSCfgns::steal(),
+                syscfg_ns: SyscfgNs::steal(),
+                syscfg_ns_cfgns: SyscfgNsCfgns::steal(),
+                syscfg_s: SyscfgS::steal(),
+                syscfg_s_cfgns: SyscfgSCfgns::steal(),
+                sysrtc0_ns: Sysrtc0Ns::steal(),
+                sysrtc0_s: Sysrtc0S::steal(),
+                timer0_ns: Timer0Ns::steal(),
+                timer0_s: Timer0S::steal(),
+                timer1_ns: Timer1Ns::steal(),
+                timer1_s: Timer1S::steal(),
+                timer2_ns: Timer2Ns::steal(),
+                timer2_s: Timer2S::steal(),
+                timer3_ns: Timer3Ns::steal(),
+                timer3_s: Timer3S::steal(),
+                timer4_ns: Timer4Ns::steal(),
+                timer4_s: Timer4S::steal(),
+                timer5_ns: Timer5Ns::steal(),
+                timer5_s: Timer5S::steal(),
+                timer6_ns: Timer6Ns::steal(),
+                timer6_s: Timer6S::steal(),
+                timer7_ns: Timer7Ns::steal(),
+                timer7_s: Timer7S::steal(),
+                ulfrco_ns: UlfrcoNs::steal(),
+                ulfrco_s: UlfrcoS::steal(),
+                // usbahb_ns_ahbs: UsbahbNsAhbs::steal(),
+                // usbahb_s_ahbs: UsbahbSAhbs::steal(),
+                usbpll0_ns: Usbpll0Ns::steal(),
+                usbpll0_s: Usbpll0S::steal(),
+                usb_ns_apbs: UsbNsApbs::steal(),
+                usb_s_apbs: UsbSApbs::steal(),
+                vdac0_ns: Vdac0Ns::steal(),
+                vdac0_s: Vdac0S::steal(),
+                wdog0_ns: Wdog0Ns::steal(),
+                wdog0_s: Wdog0S::steal(),
+                wdog1_ns: Wdog1Ns::steal(),
+                wdog1_s: Wdog1S::steal(),
+                devinfo: Devinfo::steal(),
+            }
         }
     }
 }
