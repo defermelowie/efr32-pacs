@@ -1507,7 +1507,7 @@ impl Peripherals {
     #[doc = r""]
     #[doc = r" Each of the returned peripherals must be used at most once."]
     #[inline]
-    pub unsafe fn steal() -> Self {
+    pub unsafe fn steal() -> Self { unsafe {
         DEVICE_PERIPHERALS = true;
         Peripherals {
             acmp0_ns: Acmp0Ns::steal(),
@@ -1620,5 +1620,5 @@ impl Peripherals {
             wdog1_s: Wdog1S::steal(),
             devinfo: Devinfo::steal(),
         }
-    }
+    }}
 }
