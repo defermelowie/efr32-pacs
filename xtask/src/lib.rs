@@ -43,6 +43,56 @@ pub fn generate(sh: Shell, pacs: &[Pac]) -> Result<()> {
     Ok(())
 }
 
+/// Create index.html for GitHub Pages
+pub fn create_index(pacs: &[Pac]) -> Result<()> {
+    use std::fs;
+
+    let mut html = String::from(r#"<!DOCTYPE html>
+<html>
+<head>
+    <title>EFR32 PACs Documentation</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; }
+        a { text-decoration: none; color: #0366d6; font-size: 18px; }
+        a:hover { text-decoration: underline; }
+        .description { color: #666; font-size: 14px; margin-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>EFR32 PACs Documentation</h1>
+    <p>Generated Rust documentation for EFR32 Peripheral Access Crates (PACs)</p>
+    <ul>
+"#);
+
+    for pac in pacs {
+        let crate_name = pac.name();
+        let doc_name = crate_name.replace('-', "_");
+        let description = match pac {
+            Pac::Efr32fg23 => "EFR32FG23 Peripheral Access Crate",
+        };
+
+        html.push_str(&format!(
+            r#"        <li><a href="{doc_name}/">{crate_name}</a><div class="description">{description}</div></li>
+"#
+        ));
+    }
+
+    html.push_str(r#"    </ul>
+</body>
+</html>
+"#);
+
+    fs::create_dir_all("target/doc")?;
+    fs::write("target/doc/index.html", html)?;
+
+    println!("Created index.html for {} PACs", pacs.len());
+    Ok(())
+}
+
 /// Build generated rust code
 pub fn build(sh: Shell, pacs: &[Pac]) -> Result<()> {
     setup(sh.clone(), pacs)?;
@@ -52,5 +102,21 @@ pub fn build(sh: Shell, pacs: &[Pac]) -> Result<()> {
         let target = pac.target();
         cmd!(sh, "cargo build --package {crate_name} --target {target}").run()?;
     }
+    Ok(())
+}
+
+/// Build rustdoc for generated rust code
+pub fn doc(sh: Shell, pacs: &[Pac]) -> Result<()> {
+    setup(sh.clone(), pacs)?;
+
+    for pac in pacs {
+        let crate_name = pac.name();
+        let target = pac.target();
+        cmd!(sh, "cargo doc --package {crate_name} --target {target}").run()?;
+    }
+
+    // Automatically create index.html for GitHub Pages
+    create_index(pacs)?;
+
     Ok(())
 }
