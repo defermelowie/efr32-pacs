@@ -788,24 +788,24 @@ impl core::fmt::Debug for LdmaS {
 }
 #[doc = "LDMA_S Registers"]
 pub mod ldma_s;
-#[doc = "LESENSE_NS Registers"]
-pub type LesenseNs = crate::Periph<lesense_ns::RegisterBlock, 0x5903_8000>;
-impl core::fmt::Debug for LesenseNs {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("LesenseNs").finish()
-    }
-}
-#[doc = "LESENSE_NS Registers"]
-pub mod lesense_ns;
-#[doc = "LESENSE_S Registers"]
-pub type LesenseS = crate::Periph<lesense_s::RegisterBlock, 0x4903_8000>;
-impl core::fmt::Debug for LesenseS {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("LesenseS").finish()
-    }
-}
-#[doc = "LESENSE_S Registers"]
-pub mod lesense_s;
+// #[doc = "LESENSE_NS Registers"]
+// pub type LesenseNs = crate::Periph<lesense_ns::RegisterBlock, 0x5903_8000>;
+// impl core::fmt::Debug for LesenseNs {
+//     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+//         f.debug_struct("LesenseNs").finish()
+//     }
+// }
+// #[doc = "LESENSE_NS Registers"]
+// pub mod lesense_ns;
+// #[doc = "LESENSE_S Registers"]
+// pub type LesenseS = crate::Periph<lesense_s::RegisterBlock, 0x4903_8000>;
+// impl core::fmt::Debug for LesenseS {
+//     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+//         f.debug_struct("LesenseS").finish()
+//     }
+// }
+// #[doc = "LESENSE_S Registers"]
+// pub mod lesense_s;
 #[doc = "LETIMER0_NS Registers"]
 pub type Letimer0Ns = crate::Periph<letimer0_ns::RegisterBlock, 0x5900_0000>;
 impl core::fmt::Debug for Letimer0Ns {
@@ -1265,7 +1265,7 @@ impl core::fmt::Debug for Devinfo {
 }
 #[doc = "DEVINFO Registers"]
 pub mod devinfo;
-#[no_mangle]
+#[unsafe(no_mangle)]
 static mut DEVICE_PERIPHERALS: bool = false;
 #[doc = r" All the peripherals."]
 #[allow(non_snake_case)]
@@ -1382,10 +1382,10 @@ pub struct Peripherals {
     pub ldma_ns: LdmaNs,
     #[doc = "LDMA_S"]
     pub ldma_s: LdmaS,
-    #[doc = "LESENSE_NS"]
-    pub lesense_ns: LesenseNs,
-    #[doc = "LESENSE_S"]
-    pub lesense_s: LesenseS,
+    // #[doc = "LESENSE_NS"]
+    // pub lesense_ns: LesenseNs,
+    // #[doc = "LESENSE_S"]
+    // pub lesense_s: LesenseS,
     #[doc = "LETIMER0_NS"]
     pub letimer0_ns: Letimer0Ns,
     #[doc = "LETIMER0_S"]
@@ -1566,8 +1566,8 @@ impl Peripherals {
             ldmaxbar_s: LdmaxbarS::steal(),
             ldma_ns: LdmaNs::steal(),
             ldma_s: LdmaS::steal(),
-            lesense_ns: LesenseNs::steal(),
-            lesense_s: LesenseS::steal(),
+            // lesense_ns: LesenseNs::steal(),
+            // lesense_s: LesenseS::steal(),
             letimer0_ns: Letimer0Ns::steal(),
             letimer0_s: Letimer0S::steal(),
             lfrco_ns: LfrcoNs::steal(),
