@@ -5,16 +5,14 @@
 This repository contains Peripheral Access Crates (PACs) for Silabs' EFR32 series of Cortex-M microcontrollers.
 All these crates are automatically generated using [svd2rust](https://github.com/rust-embedded/svd2rust).
 
-## Crates
-
-> WIP
+## [Documentation](https://defermelowie.github.io/efr32-pacs)
 
 ## License
 
-The included svd files were sourced from https://www.keil.arm.com/packs.
-They are [licensed](./svd/EFR32FG23/license.md) under Silicon Labs [Master Software License
-Agreement](https://www.silabs.com/about-us/legal/master-software-license-agreement).
+The included SVD files were sourced from https://www.keil.arm.com/packs.
+They are licensed under Silicon Labs [Master Software License
+Agreement](license-msla).
 
 The remainder of the code is under:
 
-- MIT license ([MIT](./license)
+- MIT license ([MIT](license-mit))
