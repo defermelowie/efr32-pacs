@@ -108,10 +108,11 @@ pub fn build(sh: Shell, pacs: &[Pac]) -> Result<()> {
 /// Build rustdoc for generated rust code
 pub fn doc(sh: Shell, pacs: &[Pac]) -> Result<()> {
     setup(sh.clone(), pacs)?;
+    sh.set_var("RUSTDOCFLAGS", "--cfg docsrs");
 
     for pac in pacs {
         let crate_name = pac.name();
-        cmd!(sh, "cargo doc --package {crate_name}").run()?;
+        cmd!(sh, "cargo +nightly doc --package {crate_name} --all-features").run()?;
     }
 
     // Automatically create index.html for GitHub Pages
