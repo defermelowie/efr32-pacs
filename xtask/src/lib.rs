@@ -14,18 +14,18 @@ pub fn setup(sh: Shell, pacs: &[Pac]) -> Result<()> {
     let targets = pacs.iter().map(|p| p.target()).sorted().dedup();
     cmd!(sh, "rustup target add {targets...}").run()?;
 
-    // Install tools
-    let tools = vec![("svd2rust", "0.37.0"), ("form", "0.13.0")];
-    for (name, version) in tools {
-        cmd!(sh, "cargo install {name} --version {version}").run()?;
-    }
-
     Ok(())
 }
 
 /// Generate rust code from SVD files
 pub fn generate(sh: Shell, pacs: &[Pac]) -> Result<()> {
     setup(sh.clone(), pacs)?;
+
+    // Install tools
+    let tools = vec![("svd2rust", "0.37.0"), ("form", "0.13.0")];
+    for (name, version) in tools {
+        cmd!(sh, "cargo install {name} --version {version}").run()?;
+    }
 
     for pac in pacs {
         let svd_path = pac.svd();
@@ -45,6 +45,8 @@ pub fn generate(sh: Shell, pacs: &[Pac]) -> Result<()> {
 
 /// Build generated rust code
 pub fn build(sh: Shell, pacs: &[Pac]) -> Result<()> {
+    setup(sh.clone(), pacs)?;
+
     for pac in pacs {
         let crate_name = pac.name();
         let target = pac.target();
