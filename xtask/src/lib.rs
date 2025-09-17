@@ -9,7 +9,7 @@ use xshell::{Shell, cmd};
 mod pac;
 pub use pac::Pac;
 
-pub fn setup(sh: Shell, pacs: &Vec<Pac>) -> Result<()> {
+pub fn setup(sh: Shell, pacs: &[Pac]) -> Result<()> {
     // Install compile targets
     let targets = pacs.iter().map(|p| p.target()).sorted().dedup();
     cmd!(sh, "rustup target add {targets...}").run()?;
@@ -24,8 +24,8 @@ pub fn setup(sh: Shell, pacs: &Vec<Pac>) -> Result<()> {
 }
 
 /// Generate rust code from SVD files
-pub fn generate(sh: Shell, pacs: &Vec<Pac>) -> Result<()> {
-    setup(sh.clone(), &pacs)?;
+pub fn generate(sh: Shell, pacs: &[Pac]) -> Result<()> {
+    setup(sh.clone(), pacs)?;
 
     for pac in pacs {
         let svd_path = pac.svd();
@@ -44,7 +44,7 @@ pub fn generate(sh: Shell, pacs: &Vec<Pac>) -> Result<()> {
 }
 
 /// Build generated rust code
-pub fn build(sh: Shell, pacs: &Vec<Pac>) -> Result<()> {
+pub fn build(sh: Shell, pacs: &[Pac]) -> Result<()> {
     for pac in pacs {
         let crate_name = pac.name();
         cmd!(sh, "cargo build --package {crate_name}").run()?;
@@ -53,6 +53,6 @@ pub fn build(sh: Shell, pacs: &Vec<Pac>) -> Result<()> {
 }
 
 /// Test
-pub fn test(sh: Shell, pacs: &Vec<Pac>) -> Result<()> {
+pub fn test(sh: Shell, pacs: &[Pac]) -> Result<()> {
     todo!()
 }
