@@ -1,0 +1,8 @@
+[package]
+name = "efr32fg25-pac"
+keywords.workspace = true
+edition.workspace = true
+version.workspace = true
+readme.workspace = true
+
+[dependencies]

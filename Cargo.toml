@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = [ "pacs/efr32fg23", "xtask"]
+members = ["pacs/*", "xtask"]
 
 [workspace.package]
 keywords = ["no-std", "cortex-m", "efr32"]

@@ -47,7 +47,8 @@ pub fn generate(sh: Shell, pacs: &[Pac]) -> Result<()> {
 pub fn create_index(pacs: &[Pac]) -> Result<()> {
     use std::fs;
 
-    let mut html = String::from(r#"<!DOCTYPE html>
+    let mut html = String::from(
+        r#"<!DOCTYPE html>
 <html>
 <head>
     <title>EFR32 PACs Documentation</title>
@@ -66,14 +67,13 @@ pub fn create_index(pacs: &[Pac]) -> Result<()> {
     <h1>EFR32 PACs Documentation</h1>
     <p>Generated Rust documentation for EFR32 Peripheral Access Crates (PACs)</p>
     <ul>
-"#);
+"#,
+    );
 
     for pac in pacs {
         let crate_name = pac.name();
         let doc_name = crate_name.replace('-', "_");
-        let description = match pac {
-            Pac::Efr32fg23 => "EFR32FG23 Peripheral Access Crate",
-        };
+        let description = pac.description();
 
         html.push_str(&format!(
             r#"        <li><a href="{doc_name}/">{crate_name}</a><div class="description">{description}</div></li>
@@ -81,10 +81,12 @@ pub fn create_index(pacs: &[Pac]) -> Result<()> {
         ));
     }
 
-    html.push_str(r#"    </ul>
+    html.push_str(
+        r#"    </ul>
 </body>
 </html>
-"#);
+"#,
+    );
 
     fs::create_dir_all("target/doc")?;
     fs::write("target/doc/index.html", html)?;
@@ -112,7 +114,11 @@ pub fn doc(sh: Shell, pacs: &[Pac]) -> Result<()> {
 
     for pac in pacs {
         let crate_name = pac.name();
-        cmd!(sh, "cargo +nightly doc --package {crate_name} --all-features").run()?;
+        cmd!(
+            sh,
+            "cargo +nightly doc --package {crate_name} --all-features"
+        )
+        .run()?;
     }
 
     // Automatically create index.html for GitHub Pages
