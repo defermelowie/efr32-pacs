@@ -13,7 +13,7 @@
 //! ## `lcd`
 //!
 //! Since not all devices in the EFR32FG23 family have a LCD peripheral, this PAC does not support it by default.
-//! Support for the LCD peripheral can be enables by enabling the `lcd` feature.
+//! Support for [LcdS] and [LcdNs] can be enabled by building with the `lcd` feature.
 //!
 //! Below is a modified table from the "EFR32FG23 Wireless SoC Family Data Sheet" that shows which devices have an LCD peripheral.
 //! | Device                  | LCD |
