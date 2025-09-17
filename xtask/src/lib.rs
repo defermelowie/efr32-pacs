@@ -47,12 +47,8 @@ pub fn generate(sh: Shell, pacs: &[Pac]) -> Result<()> {
 pub fn build(sh: Shell, pacs: &[Pac]) -> Result<()> {
     for pac in pacs {
         let crate_name = pac.name();
-        cmd!(sh, "cargo build --package {crate_name}").run()?;
+        let target = pac.target();
+        cmd!(sh, "cargo build --package {crate_name} --target {target}").run()?;
     }
     Ok(())
-}
-
-/// Test
-pub fn test(sh: Shell, pacs: &[Pac]) -> Result<()> {
-    todo!()
 }

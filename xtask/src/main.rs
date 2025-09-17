@@ -17,8 +17,6 @@ enum Cmd {
     Generate,
     /// Build generated rust code
     Build,
-    /// Test generated rust code
-    Test,
 }
 
 fn main() -> anyhow::Result<()> {
@@ -29,7 +27,6 @@ fn main() -> anyhow::Result<()> {
         Cmd::Setup => xtask::setup(sh, &pacs)?,
         Cmd::Generate => xtask::generate(sh, &pacs)?,
         Cmd::Build => xtask::build(sh, &pacs)?,
-        Cmd::Test => xtask::test(sh, &pacs)?,
     };
     Ok(())
 }
