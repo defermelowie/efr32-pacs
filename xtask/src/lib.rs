@@ -43,7 +43,7 @@ pub fn generate(sh: Shell, pacs: &[Pac]) -> Result<()> {
     Ok(())
 }
 
-/// Create index.html for GitHub Pages
+/// Create `index.html` for GitHub Pages
 pub fn create_index(pacs: &[Pac]) -> Result<()> {
     use std::fs;
 
@@ -111,8 +111,7 @@ pub fn doc(sh: Shell, pacs: &[Pac]) -> Result<()> {
 
     for pac in pacs {
         let crate_name = pac.name();
-        let target = pac.target();
-        cmd!(sh, "cargo doc --package {crate_name} --target {target}").run()?;
+        cmd!(sh, "cargo doc --package {crate_name}").run()?;
     }
 
     // Automatically create index.html for GitHub Pages
