@@ -9,6 +9,22 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Rust toolchain
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        toolchain: stable
+
+    - name: Run build
+      run: cargo xtask build
+
   test:
     name: Run Tests
     runs-on: ubuntu-latest

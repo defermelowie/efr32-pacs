@@ -45,7 +45,11 @@ pub fn generate(sh: Shell, pacs: &Vec<Pac>) -> Result<()> {
 
 /// Build generated rust code
 pub fn build(sh: Shell, pacs: &Vec<Pac>) -> Result<()> {
-    todo!()
+    for pac in pacs {
+        let crate_name = pac.name();
+        cmd!(sh, "cargo build --package {crate_name}").run()?;
+    }
+    Ok(())
 }
 
 /// Test
