@@ -1,6 +1,6 @@
 //! Functionality for xtask binary
 
-use std::fs::{create_dir, remove_file};
+use std::fs::remove_file;
 
 use anyhow::Result;
 use itertools::Itertools;
