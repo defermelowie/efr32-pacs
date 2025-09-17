@@ -1,0 +1,12 @@
+[package]
+name = "xtask"
+keywords.workspace = true
+edition.workspace = true
+version.workspace = true
+readme.workspace = true
+
+[dependencies]
+anyhow = "1.0.99"
+clap = { version = "4.5.47", features = ["derive"] }
+itertools = "0.14.0"
+xshell = "0.2.7"
